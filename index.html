@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 5.1 Teacher's Guide - AI's Crystal Ball</title>
+    <title>Lesson 5.1 Teacher's Guide - Understanding AI Predictions</title>
     <style>
         * {
             margin: 0;
@@ -15,9 +15,10 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-            max-height: 1600px;
+            background: #f5f5f5;
+            padding: 0;
+            margin: 0;
+            height: 1600px;
             overflow-y: auto;
         }
         
@@ -25,9 +26,7 @@
             max-width: 1000px;
             margin: 0 auto;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .header {
@@ -35,25 +34,65 @@
             color: white;
             padding: 2rem;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .header h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
+            color: white;
         }
         
         .header .subtitle {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.95;
             font-weight: 300;
+            color: white;
         }
         
         .header .lesson-meta {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.3);
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
             font-size: 0.9rem;
+            color: white;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .print-button:hover {
+            background: #45a049;
+        }
+        
+        @media print {
+            .print-button {
+                display: none;
+            }
+            .header {
+                position: relative;
+            }
+            body {
+                background: white;
+            }
         }
         
         .content {
@@ -213,17 +252,18 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Lesson 5.1: AI's Crystal Ball</h1>
+            <h1>📊 Lesson 5.1: Understanding AI Predictions</h1>
             <div class="subtitle">Teacher's Guide</div>
             <div class="lesson-meta">
-                <strong>Chapter 5: Magic from Math</strong><br>
-                Lesson Type: Lesson Day | Duration: 50 minutes
+                Chapter 5: Magic from Math | Lesson Type: Lesson Day | Duration: 50 minutes
             </div>
         </div>
         
+        <button class="print-button" onclick="window.print()">🖨️ Print Guide</button>
+        
         <div class="content">
             <div class="section">
-                <h2>Lesson Overview</h2>
+                <h2>🎯 Lesson Overview</h2>
                 <p>This Lesson Day introduces students to the mathematical foundations of AI predictions through the concepts of probability and confidence. Students bridge from Chapter 4's bias discoveries to understanding WHY AI makes overconfident, biased predictions. The lesson uses relatable examples (basketball, weather) to demystify how AI expresses uncertainty mathematically rather than truly "seeing" the future.</p>
                 
                 <div class="info-box">
@@ -232,7 +272,7 @@
             </div>
 
             <div class="section">
-                <h2>Learning Objectives</h2>
+                <h2>📚 Learning Objectives</h2>
                 <p>By the end of this lesson, students will be able to:</p>
                 <ul>
                     <li>Distinguish between probability (likelihood of outcome) and confidence (accuracy of calculation)</li>
@@ -244,7 +284,7 @@
             </div>
 
             <div class="section">
-                <h2>Before Class</h2>
+                <h2>🎬 Before Class</h2>
                 <h3>Technical Preparation</h3>
                 <ul>
                     <li>Ensure video "Probability and Confidence" is accessible in student interface</li>
