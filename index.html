@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5.1 Teacher's Guide - AI's Crystal Ball</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            max-height: 1600px;
+            overflow-y: auto;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .header .lesson-meta {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            font-size: 0.9rem;
+        }
+        
+        .content {
+            padding: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 2rem;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem 0;
+        }
+        
+        .section h4 {
+            color: #555;
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem 0;
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .tip-box {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .script-box {
+            background: #fafafa;
+            border: 2px solid #ddd;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        
+        .script-label {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-style: normal;
+            font-weight: bold;
+        }
+        
+        ul, ol {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        li {
+            margin: 0.5rem 0;
+        }
+        
+        strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .timeline {
+            margin: 1.5rem 0;
+        }
+        
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .timeline-time {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-content h4 {
+            margin-top: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 0.8rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .checkmark {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .x-mark {
+            color: #f44336;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Lesson 5.1: AI's Crystal Ball</h1>
+            <div class="subtitle">Teacher's Guide</div>
+            <div class="lesson-meta">
+                <strong>Chapter 5: Magic from Math</strong><br>
+                Lesson Type: Lesson Day | Duration: 50 minutes
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Lesson Overview</h2>
+                <p>This Lesson Day introduces students to the mathematical foundations of AI predictions through the concepts of probability and confidence. Students bridge from Chapter 4's bias discoveries to understanding WHY AI makes overconfident, biased predictions. The lesson uses relatable examples (basketball, weather) to demystify how AI expresses uncertainty mathematically rather than truly "seeing" the future.</p>
+                
+                <div class="info-box">
+                    <strong>Key Bridge from Chapter 4:</strong> Students discovered biased, overconfident AI predictions. Today they learn the mathematical mechanism (probability + confidence) that produces those predictions.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Learning Objectives</h2>
+                <p>By the end of this lesson, students will be able to:</p>
+                <ul>
+                    <li>Distinguish between probability (likelihood of outcome) and confidence (accuracy of calculation)</li>
+                    <li>Explain why AI cannot truly "see the future" but makes educated guesses from patterns</li>
+                    <li>Connect probability/confidence concepts to Chapter 4's observations of biased predictions</li>
+                    <li>Identify when AI predictions work well vs. when they struggle</li>
+                    <li>Recognize three types of AI predictions: classification, numerical, and behavioral</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Before Class</h2>
+                <h3>Technical Preparation</h3>
+                <ul>
+                    <li>Ensure video "Probability and Confidence" is accessible in student interface</li>
+                    <li>Verify all reading checks and review questions are deployed</li>
+                    <li>Prepare to display examples (sports, weather) relevant to your students</li>
+                </ul>
+                
+                <h3>Content Preparation</h3>
+                <ul>
+                    <li>Review the distinction between probability and confidence—be ready with your own examples</li>
+                    <li>Prepare to reference specific Chapter 4 moments (biased job predictions, cultural stereotypes)</li>
+                    <li>Have local/current examples ready: local sports teams, weather patterns students care about</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Common Student Misconception:</strong> Students often think probability and confidence are the same thing. Be prepared to reinforce this distinction multiple times using concrete examples.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>⏱️ Lesson Flow (50 minutes)</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">0-3 min</div>
+                        <div class="timeline-content">
+                            <h4>Opening: Bridge from Chapter 4</h4>
+                            <div class="script-box">
+                                <div class="script-label">SUGGESTED OPENING</div>
+                                "Last chapter you discovered AI making biased predictions—stereotyping jobs by gender, making assumptions about cultures. And sometimes these predictions seemed really overconfident. Today's the day we understand WHY. The answer is mathematical: probability and confidence. Let's dig in."
+                            </div>
+                            <p><strong>Your role:</strong> Activate prior knowledge by having students recall 1-2 specific examples from Chapter 4.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">3-10 min</div>
+                        <div class="timeline-content">
+                            <h4>Video: Probability and Confidence</h4>
+                            <p>Students watch video and complete video check.</p>
+                            <p><strong>After video:</strong> Briefly discuss the video check answer. Clarify any immediate confusion about the four possible combinations of high/low probability and high/low confidence.</p>
+                            <div class="tip-box">
+                                <strong>Teaching Tip:</strong> Use the 2x2 grid visual if needed—high/low probability on one axis, high/low confidence on the other. All four quadrants are possible!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">10-25 min</div>
+                        <div class="timeline-content">
+                            <h4>Core Content: Sections C-G</h4>
+                            <p>Students read through the main conceptual sections. Pause at key moments for discussion:</p>
+                            
+                            <p><strong>Section C (Probability basics):</strong> Reading check—have students share their definitions of probability.</p>
+                            
+                            <p><strong>Section E (Confidence):</strong> This is the critical section. Use the three rain scenarios to ensure understanding:</p>
+                            <ul>
+                                <li>Scenario A: High probability + high confidence = trust it</li>
+                                <li>Scenario B: Low probability + low confidence = don't trust it</li>
+                                <li>Scenario C: Low probability + high confidence = AI is sure about uncertainty</li>
+                            </ul>
+                            
+                            <div class="script-box">
+                                <div class="script-label">CHECK FOR UNDERSTANDING</div>
+                                "Someone give me an example where you'd want to know BOTH numbers before making a decision. Why would just knowing probability not be enough?"
+                            </div>
+
+                            <p><strong>Section G (Limits):</strong> Connect back to Chapter 4—bias occurs when training data has patterns (stereotypes) that AI learns with high confidence.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">25-32 min</div>
+                        <div class="timeline-content">
+                            <h4>Today's Big Question (Section H)</h4>
+                            <p>Students write individual responses, then discuss in pairs or small groups.</p>
+                            <p><strong>Facilitate whole-class sharing:</strong> Collect 3-4 examples of how confidence levels inform decisions.</p>
+                            <div class="success-box">
+                                <strong>Look for:</strong> Students who connect this to real decisions they make (checking weather, studying for tests, choosing restaurants).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">32-40 min</div>
+                        <div class="timeline-content">
+                            <h4>Types of Predictions & Mathematics (Sections I-J)</h4>
+                            <p>These sections can be read independently or discussed briefly as a class.</p>
+                            <p><strong>Key points to emphasize:</strong></p>
+                            <ul>
+                                <li>Classification, numerical, and behavioral predictions all use probability</li>
+                                <li>AI confidence comes from patterns in training data, not "gut feeling"</li>
+                                <li>More similar data = higher confidence</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">40-47 min</div>
+                        <div class="timeline-content">
+                            <h4>Review Questions (Section L)</h4>
+                            <p>Students complete five review questions independently.</p>
+                            <p><strong>After completion:</strong> Quickly review answers as a class. Address any lingering misconceptions.</p>
+                            <div class="info-box">
+                                <strong>Answer Key:</strong> 1-C, 2-D, 3-D, 4-A, 5-D
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">47-50 min</div>
+                        <div class="timeline-content">
+                            <h4>Preview Tomorrow's Lab & Assignment</h4>
+                            <div class="script-box">
+                                <div class="script-label">CLOSING</div>
+                                "Tomorrow you'll test these concepts hands-on with Alia. You'll make sports predictions, weather forecasts, and even question the time estimates in your lesson guide! Come ready to ask follow-up questions and dig into how Alia calculates probability and confidence. Tonight, complete your field journal reflection—it's worth mastery points."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📝 Assessment: Mastery Points (1-2-3-4 Scale)</h2>
+                <p>Students earn mastery points through field journal reflection on four questions connecting to Chapter 4, defining concepts, applying to real world, and preparing for tomorrow's lab.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Points</th>
+                            <th>Criteria</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>4 Points<br>(Exemplary)</strong></td>
+                            <td>
+                                • Makes explicit, insightful connections between Chapter 4 bias and probability concepts<br>
+                                • Explains probability vs confidence with clarity and original examples<br>
+                                • Shows sophisticated thinking about when to trust predictions<br>
+                                • Demonstrates genuine curiosity about tomorrow's experiments
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>3 Points<br>(Proficient)<br>FULL CREDIT</strong></td>
+                            <td>
+                                • Connects Chapter 4 to probability concepts<br>
+                                • Clearly distinguishes probability from confidence<br>
+                                • Identifies appropriate real-world application<br>
+                                • Shows readiness for tomorrow's lab
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>2 Points<br>(Developing)</strong></td>
+                            <td>
+                                • Partial connection to Chapter 4<br>
+                                • Basic understanding but some confusion between concepts<br>
+                                • Generic real-world example<br>
+                                • Minimal preparation for next lesson
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>1 Point<br>(Beginning)</strong></td>
+                            <td>
+                                • Little connection to prior learning<br>
+                                • Confusion about probability vs confidence<br>
+                                • Incomplete or off-topic responses
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="tip-box">
+                    <strong>Grading Tip:</strong> Focus on whether students can distinguish probability from confidence and connect to Chapter 4. The quality of the connection matters more than length of response.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💡 Teaching Strategies</h2>
+                
+                <h3>Making Probability Accessible</h3>
+                <ul>
+                    <li><strong>Avoid math anxiety:</strong> Emphasize this is about concepts, not calculations</li>
+                    <li><strong>Use student interests:</strong> Replace generic examples with teams/events students care about</li>
+                    <li><strong>Visual aids:</strong> Draw 2x2 grids showing probability vs confidence combinations</li>
+                    <li><strong>Real-time examples:</strong> Check actual weather forecast confidence levels</li>
+                </ul>
+
+                <h3>Reinforcing the Key Distinction</h3>
+                <div class="script-box">
+                    <div class="script-label">ANALOGY TO USE</div>
+                    "Probability is the prediction itself—will it rain? Confidence is how sure you are about your prediction method. I can predict rain with a coin flip (50% probability) but have zero confidence that my method is any good. Or I can use weather radar and historical data to predict 50% probability but be 90% confident that my calculation method is sound."
+                </div>
+
+                <h3>Connecting to Chapter 4</h3>
+                <p>Make this connection explicit throughout:</p>
+                <ul>
+                    <li>"Remember the gender-job stereotypes? AI learned those patterns from biased training data and expressed them with high confidence."</li>
+                    <li>"Overconfident predictions happen when AI has lots of data showing a pattern—even if that pattern is a stereotype."</li>
+                    <li>"Understanding confidence helps us question: Should AI be that confident given the data it learned from?"</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>⚠️ Common Challenges & Solutions</h2>
+                
+                <h3>Challenge: "Probability and confidence sound the same to me"</h3>
+                <p><strong>Solution:</strong> Use the coin flip vs weather radar analogy above. Or: "Probability = what you predict. Confidence = how good your crystal ball is."</p>
+
+                <h3>Challenge: "Why does AI need two numbers?"</h3>
+                <p><strong>Solution:</strong> "Would you rather know: (A) 70% chance of rain, or (B) 70% chance of rain AND I'm 95% sure my model works? The second helps you decide whether to trust it."</p>
+
+                <h3>Challenge: Students want formulas/calculations</h3>
+                <p><strong>Solution:</strong> Redirect to concepts: "We're focused on understanding what these numbers mean and how to use them. The actual calculations happen inside the AI—our job is to interpret the results critically."</p>
+
+                <h3>Challenge: "Can't AI just be 100% confident if it has lots of data?"</h3>
+                <p><strong>Solution:</strong> Great question! Connect to Section G—some things are inherently unpredictable (random events, human emotions, changing rules). More data about random events doesn't make them predictable.</p>
+            </div>
+
+            <div class="section">
+                <h2>🔗 Connections</h2>
+                
+                <h3>Looking Back</h3>
+                <ul>
+                    <li><strong>Chapter 2:</strong> Training data determines what patterns AI learns</li>
+                    <li><strong>Chapter 4:</strong> Biased training data leads to biased predictions expressed with (false) confidence</li>
+                </ul>
+
+                <h3>Looking Forward</h3>
+                <ul>
+                    <li><strong>Lesson 5.2:</strong> Students will observe probability and confidence in action through Alia experiments</li>
+                    <li><strong>Lesson 5.3:</strong> Pattern recognition limits—why some predictions are impossible regardless of confidence</li>
+                    <li><strong>Chapter 6:</strong> High-stakes decisions—should AI make predictions about people's lives?</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>✅ Success Indicators</h2>
+                <p>By the end of class, you should observe:</p>
+                <ul>
+                    <li><span class="checkmark">✓</span> Students can explain probability vs confidence in their own words</li>
+                    <li><span class="checkmark">✓</span> Students reference Chapter 4 when discussing overconfident predictions</li>
+                    <li><span class="checkmark">✓</span> Students recognize that both numbers matter for decision-making</li>
+                    <li><span class="checkmark">✓</span> Students identify situations where AI predictions work well vs struggle</li>
+                    <li><span class="checkmark">✓</span> Students show curiosity about tomorrow's hands-on experiments</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Red Flag:</strong> If students still conflate probability with confidence after Section E, pause for additional examples before moving forward. This distinction is foundational for the rest of Chapter 5.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🏠 Homework / Field Journal</h2>
+                <p><strong>Required:</strong> Complete four field journal reflection questions (assessed for mastery points)</p>
+                <p><strong>Optional Extension:</strong> Track a real prediction (weather, sports) over several days and note how probability and confidence change</p>
+                
+                <div class="info-box">
+                    <strong>Reminder for Tomorrow:</strong> Students should come prepared to experiment with Alia. Their field journal question 4 asks what they want to explore—use these student questions to enrich tomorrow's lab discussions.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📌 Final Notes</h2>
+                <ul>
+                    <li>This is a conceptual foundation lesson—prioritize understanding over speed</li>
+                    <li>The Chapter 4 bridge is critical—make it explicit multiple times</li>
+                    <li>Students will apply these concepts hands-on tomorrow, so solid conceptual grounding today pays off</li>
+                    <li>Embrace questions about "why two numbers?"—this shows students are thinking critically</li>
+                    <li>Remember: 3 points = full credit. Not every student needs to reach exemplary level.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
